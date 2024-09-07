@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Function to determine if the first player can win the Game of Nim
+bool canFirstPlayerWin(const vector<int>& piles) {
+int xor_sum = 0;
+
+// Compute the XOR of all the pile sizes
+for (int stones : piles) {
+xor_sum ^= stones;
+}
+
+// If the XOR is non-zero, the first player can win
+return xor_sum != 0;
+}
+
+int main() {
+int n;
+cin >> n;  // Number of piles
+vector<int> piles(n);
+
+// Input the number of stones in each pile
+for (int i = 0; i < n; ++i) {
+cin >> piles[i];
+}
+
+// Check if the first player can win and print the result
+if (canFirstPlayerWin(piles)) {
+cout << "True" << endl;
+} else {
+cout << "False" << endl;
+}
+
+return 0;
+}
